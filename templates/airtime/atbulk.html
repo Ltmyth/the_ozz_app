@@ -1,0 +1,120 @@
+{% extends 'includes/newbes.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<div style="padding-top:2%;">
+  <head>
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+  </head>
+  <br>
+  <h3>
+    <a href="{% url 'at_buy' %}" id="buttn" class="btn btn-lg" >
+      <b>0zzBuy</b>
+    </a>
+    <a href="{% url 'airtime' %}" id="buttnx" class="btn btn-lg" >
+      <b>MobileMoneyBuy</b>
+    </a>
+    <a href="{% url 'atbulk' %}" id="active" class="btn btn-lg" >
+     <b>BulkBuy</b>
+    </a>
+    
+    <a href="{% url 'at_subscribe' %}" id="buttn" class="btn btn-lg" >
+      <b>Schedule</b>
+    </a>
+    <a href="{% url 'ozz_history' %}" id="buttn" class="btn btn-lg" >
+      <b>History</b>
+    </a>
+  </h3>    
+   <form method="POST" action="{% url 'atbulk' %}" style="margin-left:180;margin-right:300;margin-top:70;" name="sub" enctype="multipart/form-data">
+		  {% csrf_token %}
+      <div style="margin-top:70;margin-right:400;position: fixed;" class="table-responsive">
+      <table cellpadding="2" style="height:200;" class="table">                                        
+        <tbody>
+          <tr>
+            <td>
+              <span>
+                <b>
+                  <i style="color:black;" class="glyphicon glyphicon-paperclip"></i> Receivers 
+                </b>
+                |
+                <a style="width:135;height:35;" href="{% url 'csv_download' %}" >
+                  <b><i style="color:blue;"><u>Sample.csv</u></i></b>
+                </a>
+              </span>
+              <br>
+              <br>
+                <input type="file" class="form-control" style="width:250;height:35;" name="browse" value="browse" accept=".csv">                                             
+            </td>                                                            
+          </tr>          
+
+          <tr>
+            <td>
+              <input type="submit" class="btn btn-success" style="height:40;width:80;" value="Buy">
+              <input  class="btn btn-success" style="height:40;width:90;" value="Schedule" readonly>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>  
+    </form> 
+</div>
+<style type="text/css">
+   
+   h1{
+    margin-left:5%;
+    width:500;
+    }
+
+
+  #active{
+    background:#ff6666;
+    height:40;
+    text-align:center;
+    color:white;
+    font-size: 15;
+    width:150;
+    text-align: center;
+  }
+
+  #buttn{
+    height:40;
+    width:100;
+    background:#808080;
+    font-size: 15;
+  }
+
+  #airtime{
+            background: #0277bd;
+        }
+
+
+  #buttnx{
+    height:40;
+    width:150;
+    background:#808080;
+    font-size: 15;
+  }
+
+
+
+  h3{
+      float:right;
+      margin-right:10%;
+    }
+
+
+	a{
+		color:white;
+    text-align: center;
+	}
+
+   #amount{
+   	 width:200;
+   	 height:40;
+   }
+
+   
+	
+</style>
+{% endblock %}

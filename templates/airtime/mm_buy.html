@@ -1,0 +1,129 @@
+{% extends 'includes/newbes.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">	
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+</head>
+<div style="padding-top:2%;">
+    <br>
+    <h3>
+        <a href="{% url 'at_buy' %}" id="buttn" class="btn btn-lg" >
+          <b>0zzBuy</b>
+        </a>
+        <a href="{% url 'airtime' %}" id="active"  class="btn btn-lg" >
+          <b>MobileMoneyBuy</b>
+        </a>
+        <a href="{% url 'atbulk' %}" id="buttn" class="btn btn-lg" >
+          <b>BulkBuy</b>
+        </a>
+        <a href="{% url 'at_subscribe' %}" id="buttn" class="btn btn-lg" >
+           <b>Schedule</b>
+        </a>
+        <a href="{% url 'ozz_history' %}" id="buttn" class="btn btn-lg" >
+          <b>History</b>
+        </a>
+    </h3>
+    
+	<div id="momo">
+	    <form method="POST" action="{% url 'at' %}" style="margin-left:250;margin-right:300;margin-top:80;" name="sub">
+		{% csrf_token %}
+		<table id="tebo">
+			<tr>
+				<td>
+					<input class="form-control" name="chargephone" id="inz" placeholder="Enter charge number here" minlength="13" maxlength="13" required>
+				</td>
+			</tr>
+			<tr>
+			   	<td>
+			   		<input class="form-control" placeholder="Enter receiving number here" id="inz" name="phone"  required>
+			   	</td>
+			</tr>
+			<tr>
+				<td>
+					<input placeholder="Enter amount here" class="form-control" id="inz" name="amount" required>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" class="btn btn-success" style="height:40;width:80;" value="Buy">
+					<input  class="btn btn-success" style="height:40;width:90;" value="Schedule" readonly>
+				</td>
+			</tr>
+		</table>
+	    </form>
+	</div>
+</div>
+<style type="text/css">
+
+    h1{
+    margin-left:5%;
+    width:500;
+    }
+
+
+    #active{
+    background:#ff6666;
+    height:40;
+    text-align:center;
+    color:white;
+    font-size: 15;
+    width:170;
+    text-align: center;
+  }
+
+  #airtime{
+            background: #0277bd;
+        }
+
+
+  #buttn{
+    height:40;
+    width:100;
+    background:#808080;
+    font-size: 15;
+  }
+
+  #buttnx{
+    height:40;
+    width:150;
+    background:#808080;
+    font-size: 15;
+  }
+
+
+	#tebo{
+		width:50%;
+		height:50%;
+    margin-left:20;
+	}
+
+	#mbuy{
+		width:80;
+		height:30;
+	}
+	#inz{
+		width:250;
+		height:35;
+	}
+	#momo{
+		
+	}
+	h2{
+		margin-left:5%;
+		padding:20;
+		width:200;
+		background:green;
+	}
+
+	h3{
+      float:right;
+      margin-right:10%;
+      }
+
+	a{
+		color:white;
+	}
+</style>
+{% endblock %}

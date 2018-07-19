@@ -1,0 +1,132 @@
+{% extends 'includes/newbes.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">	
+    <link href='http://fonts.googleapis.com/css?family=Volkhov' rel='stylesheet' type='text/css'>
+</head>
+<div style="padding-top:2%;">
+    <br>
+     <h3>
+        <a href="{% url 'send_sms' %}" id="buttn" class="btn btn-lg">
+          <b>SendSMS</b>
+        </a>
+        <a href="{% url 'bulks' %}" id="active"  class="btn btn-lg">
+           <b>BulkSMS</b>
+        </a>
+        <a href="{% url 'sms_schedule' %}" id="buttn" class="btn btn-lg">
+           <b>Schedule</b>
+        </a>
+        <a href="{% url 'smshistory' %}" id="buttn" class="btn btn-lg">
+           <b>History</b>
+        </a>
+     </h3>
+<form style="margin-left:250;margin-right:300;" action="{% url 'bulks' %}"  enctype="multipart/form-data">
+{% csrf_token %}
+    <div style="margin-top:100;margin-right:400;position: fixed;" class="table-responsive">
+      <table cellpadding="2" class="table">                                        
+        <tbody>
+          <tr>
+            <td>
+              <span>
+                <b>
+                  <i style="color:black;" class="glyphicon glyphicon-paperclip"></i>
+                  Contacts 
+                </b>
+                |
+                <a  href="{% url 'sms_csv_download' %}" >
+                  <u><i style="color:blue;"><b>Sample.csv</b></i></u>
+                </a>
+              </span>
+              <br>
+              <br>
+              <input type="file" class="form-control" style="width:250;height:35;" name="browse" value="browse" accept=".csv">                                             
+            </td>
+            <td style="margin-right:300;" class='pull-right'>
+                
+            </td>                                                
+          </tr>
+
+          <tr>
+            <td>          
+              <textarea type="text" class="form-control" id="messg" placeholder="Enter message here" name="sms_message"
+              {% if form.name.value != None %}value="{{ form.name.value|stringformat:'s' }}"{% endif %} minlength="3" maxlength="500" required></textarea>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <button type="submit" class="btn btn-success" formmethod="POST" action="sms/bulks.html">
+               SEND
+              </button>
+              <input  class="btn btn-success" style="height:40;width:90;" value="Schedule" readonly>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</form>
+<style type="text/css">
+    #active{
+      background:#ff6666;
+          height:40;
+          text-align:center;
+          color:white;
+          font-size: 15;
+          width:100;
+          text-align: center;
+        }
+    #buttn{
+          height:40;
+          width:100;
+          color:white;
+          background:#808080;
+          font-size: 15;
+          text-align: center;
+        }
+
+        #sms{
+            background: #0277bd;
+        }
+
+
+    h1{
+        margin-left:5%;
+        width:500;
+    }
+
+    h3{
+      float:right;
+      margin-right:10%;
+      }
+
+	a{
+	 color:teal;
+    }
+
+
+    button{
+    	width:80;
+    	height:40;
+    	color:green;
+    }
+
+    input{
+    	
+    	height:50;
+    }
+
+
+	#messg{
+		height: 100;
+		width: 400;
+		margin:left;
+		text-align:left;		
+		}
+
+	
+</style>	
+</div>
+{% endblock %}
+

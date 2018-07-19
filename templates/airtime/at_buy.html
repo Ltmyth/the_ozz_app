@@ -1,0 +1,130 @@
+{%extends 'includes/newbes.html'%}
+{% load staticfiles %}
+{% block body_block %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"> 
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+</head>
+<div style="padding-top:2%;">
+<br>
+<h3>
+  <a href="{% url 'at_buy' %}" id="active" class="btn btn-lg" >
+    <b>0zzBuy</b>
+  </a>
+  <a href="{% url 'airtime' %}" id="buttnx" class="btn btn-lg" >
+    <b>MobileMoneyBuy</b>
+  </a>
+  <a href="{% url 'atbulk' %}" id="buttn" class="btn btn-lg" >
+    <b>BulkBuy</b>
+  </a>
+  <a href="{% url 'at_subscribe' %}" id="buttn" class="btn btn-lg" >
+    <b>Schedule</b>
+  </a>
+  <a href="{% url 'ozz_history' %}" id="buttn" class="btn btn-lg" >
+    <b>History</b>
+  </a>
+
+</h3>
+<center>
+  <div id="at_buddy">
+   <form method="POST" action="{% url 'buy' %}" id="formt" style="margin-left:90;margin-right:300;margin-top:80;" name="sub">
+    {% csrf_token %}
+    <table id="tebo">
+      
+      <tr>
+        <td>
+          <input placeholder="Enter phone number here" class="form-control" id="in" name="phone"  required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input placeholder="Enter amount here" class="form-control" id='in' name="amount" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="submit"  class="btn btn-success" style="height:40;width:80;" value="Buy">
+          <input  class="btn btn-success" style="height:40;width:90;" value="Schedule" readonly>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+</center>
+</div>
+<style type="text/css">
+
+  #send_button{
+    width:70;
+    height:40;
+    margin-left:150;
+  }
+
+  #in{
+    width:250;
+    height:35;
+  }
+
+
+   #active{
+    background:#ff6666;
+    height:40;
+    text-align:center;
+    color:white;
+    font-size: 15;
+    width:100;
+    text-align: center;
+  }
+
+  #buttn{
+    height:40;
+    width:100;
+    background:#808080;
+    font-size: 15;
+  }
+
+  #buttnx{
+    height:40;
+    width:150;
+    background:#808080;
+    font-size: 15;
+  }
+
+  #airtime{
+            background: #0277bd;
+        }
+
+
+
+  h1{
+    margin-left:5%;
+    width:500;
+    }
+
+  
+
+  table{
+    width:60%;
+    height:40%;    
+  }
+
+  h2{
+   margin-left:5%;
+   width:50;
+   padding:20;
+   background:green;
+  }
+
+  a{
+    color:white;
+    text-align:center;
+  }
+
+h3{
+      float:right;
+      margin-right:10%;
+      }
+
+</style>
+{% endblock %}

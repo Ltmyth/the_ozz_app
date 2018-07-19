@@ -1,0 +1,125 @@
+{% extends 'includes/newbes.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">	
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+</head>
+<div style="padding-top:2%;">
+    <br>
+     <h3>
+        <a href="{% url 'send_sms' %}" id="buttn" class="btn btn-lg">
+          <b>SendSMS</b>
+        </a>
+        <a href="{% url 'bulks' %}" id="buttn" class="btn btn-lg">
+           <b>BulkSMS</b>
+        </a>
+        <a href="{% url 'sms_schedule' %}" id="active" class="btn btn-lg">
+           <b>Schedule</b>
+        </a>
+        <a href="{% url 'smshistory' %}" id="buttn" class="btn btn-lg">
+           <b>History</b>
+        </a>
+     </h3>
+	
+	<div id="tad">
+			<form  name="formt" id="formt" action="{% url 'send_sms'  %}">
+				{% csrf_token %}
+			<table id="tebo">
+			    <tr>
+			    	<td>
+			    	   DATE
+			    	</td>
+			    	<td>
+			    		Message
+			    	</td>
+			    	<td>
+			    	    Contact
+			    	</td>
+			    	<td>
+			    		TIME
+			    	</td>
+			    	<td>
+			    		Status
+			    	</td>
+			    </tr>	    
+			
+			</table>
+			</form>
+		</div>
+		<script type="text/javascript">
+			function wait(){
+				alert("Sending text");
+			}
+		</script>
+		<style type="text/css">
+
+		#active{
+          background:#ff6666;
+          height:40;
+          text-align:center;
+          color:white;
+          font-size: 15;
+          width:100;
+          text-align: center;
+        }
+
+       #buttn{
+       	  height:40;
+       	  width:100;
+       	  color:white;
+       	  font-size: 15;
+       	  background: #808080;
+        }
+
+        #formt{
+        	
+        	margin-left:250;
+        	margin-right:300;
+        	text-align:center;
+        	margin-left:250;
+        }
+
+		h3{
+		  float:right;
+		  margin-right:10%;
+	    }
+
+
+	    #sms{
+            background: #0277bd;
+        }
+
+
+	    
+		button{
+			width:80;
+			height:40;
+			color:green;
+		}
+
+		h1{
+            margin-left:5%;
+            width:500;
+        }
+
+		
+		#tebo{
+			margin: auto;
+			width:600px;
+			height: 450px;
+			padding: 20;
+		}	
+
+		#messg{
+			height: 100;
+			width: 500;
+			margin:left;
+			text-align:left;			
+		}	
+		</style>
+</center>
+</div>
+{% endblock %}
+
