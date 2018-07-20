@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^vhistory/$', views.vhistory, name='vhistory'),
     url(r'^kol/$', views.kol, name='kol'),
     url(r'^fwd/$', views.fwd, name='fwd'),
+    url(r'^record/$', views.record, name='record'),
     url(r'^err/$', views.err, name='err'),
     #deletes
     url(r'^delete/(?P<id>\d+)/$',views.delete,name='delete'),

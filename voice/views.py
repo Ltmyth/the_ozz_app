@@ -38,6 +38,10 @@ def kol(request):
 @login_required
 def index(request):
 	return render(request,'voice/index.html')
+
+@login_required
+def record(request):
+	return render(request,'voice/record.html')
 	
 
 

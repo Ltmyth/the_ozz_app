@@ -30,10 +30,10 @@
             </tr>
             <tr>
                 <td>
-      	           <input id="addno"  name="addno" required>
+      	           <input id="addno" class="form-control"  name="addno" required>
       	        </td>
        	        <td>
-       	           <input type="submit" value="+" id="plus" name="sub" required="addno">
+       	           <input type="submit" value="+"  id="plus" name="sub" required="addno">
        	        </td>
        	    </tr>
        	</table>
@@ -93,26 +93,41 @@
 						  Enter welcome Message
 					    </b>
 					</p>
-					<textarea type="text" id="messg" name="fw_message"
+					<textarea type="text" class="form-control" id="messg" name="fw_message"
 					 required></textarea>
 				</td>	
 			</tr>
 
+			
 			<tr>
 				<td>
 					<input type="radio" name="voice" value="male" checked>
 					  Female
-					<br>
 					<input type="radio" name="voice" value="female">
 					 Male
+					<br>
+					<br>
+					<label>
+						Record Voice note
+					</label>
+					<a class="btn btn-success btn-sm" href="{% url 'record' %}">
+						Record
+					</a>
+					<br>
 					<br>
 					<i>
 					  Voice note(.mp3)
 					</i>
-					 <input type="file" name="voice" value="user_voice">
+					 <input type="file" class="form-control" name="voice" value="user_voice">
 					<br>
-					<br>
+					<br>					
 					<input type="submit" style="width:100;height:40;text-align:center;" value="Set">
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					
 				</td>
 			</tr>
 		</table>
@@ -181,6 +196,7 @@
 	#plus{
 		width:40;
 		height:40;
+		border:round;
 	}
 
 	

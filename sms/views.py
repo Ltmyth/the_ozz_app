@@ -8,6 +8,9 @@ from .models import Smshist
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 import csv
 import codecs
+from datetime import datetime
+from time import ctime
+from .models import Schedule
 
 
 # Create your views here.
@@ -117,7 +120,21 @@ def smshistory(request):
 
 @login_required
 def sms_schedule(request):
-   return render(request,"sms/sms_schedule.html")
+   if request.method == "GET":      
+      stats = Schedule.objects.order_by("-time")
+      return render(request, 'sms/sms_schedule.html',{'stats':stats})
+   else:
+      #messsage_info
+      message = request.POST.get('sms_message')
+      name = request.POST.get('name')
+      phone = request.POST.get('phone')
+      #time = str(datetime.now())
+      time = ctime()
+      #save 2 schedule
+      schedule = Schedule(time=time,name=name,message=message,number=phone)
+      schedule.save()
+      stats = Schedule.objects.order_by("-time")
+      return render(request, 'sms/sms_schedule.html',{'stats':stats})
    
 #deletes
 #sms hist item delete

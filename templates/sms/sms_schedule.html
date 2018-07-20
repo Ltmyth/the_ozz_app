@@ -26,26 +26,87 @@
 	<div id="tad">
 			<form  name="formt" id="formt" action="{% url 'send_sms'  %}">
 				{% csrf_token %}
+			<!--<div class="table">
 			<table id="tebo">
 			    <tr>
-			    	<td>
-			    	   DATE
-			    	</td>
-			    	<td>
-			    		Message
-			    	</td>
-			    	<td>
-			    	    Contact
-			    	</td>
-			    	<td>
-			    		TIME
-			    	</td>
-			    	<td>
+			    	<th>
+			    	   Time
+			    	</th>
+
+			    	<th>
+			    		Contact
+			    	</th>
+
+			    	<th>
+			    	    Message
+			    	</th>
+
+			    	<th>
+			    		Destination
+			    	</th>
+
+			    	<th>
 			    		Status
-			    	</td>
-			    </tr>	    
+			    	</th>
+
+			    	<th>
+			    		Action
+			    	</th>
+			    </tr>
+			
+
 			
 			</table>
+			</div>-->
+			<div style="margin-top:100;" class="page-wrapper">
+            <div class="container-fluid">
+                
+                <!-- Row -->
+                <div  class="row">
+                    <!-- Column -->
+                    <div  class="col-lg-12 col-xlg-12 col-md-12">
+                        <div  class="card">
+                            <div  class="card-block">
+                                <div  class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Message</th>
+                                                <th>Name</th>
+                                                <th>Number</th>
+                                                <th>Scheduled For</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        	{% if stats %}
+			    								{% for stat in stats %}
+													<tr>
+														<td>{{stat.message}}</td>
+														<td>{{stat.name}}</td>
+														<td>{{stat.number}}</td>
+														<td>{{stat.time}}</td>
+														<td><b style="color:green;">Qued</b></td>
+														<td><a class="btn btn-sm" href="#">Cancel</a></td>
+													</tr>
+												{% endfor %}
+											{% else %}
+			 									<tr>
+			  										<td>Nothing scheduled</td>
+			  									</tr>
+											{% endif %}                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 			</form>
 		</div>
 		<script type="text/javascript">
@@ -74,8 +135,6 @@
         }
 
         #formt{
-        	
-        	margin-left:250;
         	margin-right:300;
         	text-align:center;
         	margin-left:250;
